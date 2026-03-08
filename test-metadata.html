@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Metadata Test</title>
+</head>
+<body>
+
+<h2>Upload an image to inspect metadata</h2>
+
+<input type="file" id="imageInput" accept="image/*">
+<pre id="output"></pre>
+
+<script src="https://cdn.jsdelivr.net/npm/exifr/dist/lite.umd.js"></script>
+
+<script>
+const input = document.getElementById("imageInput");
+const output = document.getElementById("output");
+
+input.addEventListener("change", async (event) => {
+
+  const file = event.target.files[0];
+  if (!file) return;
+
+  try {
+
+    const metadata = await exifr.parse(file);
+
+    output.textContent = JSON.stringify(metadata, null, 2);
+
+  } catch (err) {
+
+    output.textContent = "Error reading metadata: " + err;
+
+  }
+
+});
+</script>
+
+</body>
+</html>
