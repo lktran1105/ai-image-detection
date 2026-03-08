@@ -1,10 +1,14 @@
+
 {
   "manifest_version": 3,
   "name": "AI Image Guard",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Helps identify AI-generated images with simple, elder-friendly alerts.",
   "permissions": [
     "activeTab"
+  ],
+  "host_permissions": [
+    "https://generativelanguage.googleapis.com/*"
   ],
   "background": {
     "service_worker": "background.js"
